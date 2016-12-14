@@ -88,13 +88,18 @@
                  [mutableString appendFormat:@"%@", substring];
                  if([substring isEqualToString:stringForColor]) {
                      //颜色 设置
-                     [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:enclosingRange];
-                 }
+                     
+                     if([UIColor redColor] == nil) {
+                         return;
+                     } else {
+                         [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:enclosingRange];
+                     }
+                  }
              }];
-            
+             _contentLabel.attributedText = str;
         }
         
-        _contentLabel.attributedText = str;
+       
         
     } else {
         _contentLabel.textColor = [UIColor blackColor];

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		38226A8D1E00101F006B0263 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38226A8C1E00101F006B0263 /* ArticleViewController.m */; };
-		38226A951E006D24006B0263 /* UILabel+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 38226A941E006D24006B0263 /* UILabel+Tool.m */; };
 		38468A811DFC4DDC008C7EF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38468A7F1DFC4DDC008C7EF8 /* LaunchScreen.storyboard */; };
 		38468A8D1DFC5FA5008C7EF8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38468A8C1DFC5FA5008C7EF8 /* CoreText.framework */; };
 		38468A941DFC63A4008C7EF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38468A911DFC63A4008C7EF8 /* AppDelegate.m */; };
@@ -26,8 +25,6 @@
 /* Begin PBXFileReference section */
 		38226A8B1E00101F006B0263 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
 		38226A8C1E00101F006B0263 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
-		38226A931E006D24006B0263 /* UILabel+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Tool.h"; sourceTree = "<group>"; };
-		38226A941E006D24006B0263 /* UILabel+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Tool.m"; sourceTree = "<group>"; };
 		38468A6E1DFC4DDC008C7EF8 /* LMN_ShanbayVenus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMN_ShanbayVenus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38468A801DFC4DDC008C7EF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38468A8C1DFC5FA5008C7EF8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -61,15 +58,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		38226A921E006CB7006B0263 /* UILabel+Tool */ = {
-			isa = PBXGroup;
-			children = (
-				38226A931E006D24006B0263 /* UILabel+Tool.h */,
-				38226A941E006D24006B0263 /* UILabel+Tool.m */,
-			);
-			path = "UILabel+Tool";
-			sourceTree = "<group>";
-		};
 		38468A651DFC4DDC008C7EF8 = {
 			isa = PBXGroup;
 			children = (
@@ -150,7 +138,6 @@
 		38468A9C1DFC63CA008C7EF8 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				38226A921E006CB7006B0263 /* UILabel+Tool */,
 				38583E041DFEF4420007CF93 /* NSArray+Tool */,
 				38583E001DFEF4160007CF93 /* Single */,
 			);
@@ -274,7 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38226A951E006D24006B0263 /* UILabel+Tool.m in Sources */,
 				38583E071DFEF4900007CF93 /* NSArray+Tool.m in Sources */,
 				38468A9A1DFC63B8008C7EF8 /* ViewController.m in Sources */,
 				38468A961DFC63A4008C7EF8 /* main.m in Sources */,
