@@ -9,10 +9,12 @@
 #import "ArticleViewController.h"
 #import "NumberOfArticle.h"
 #import "ViewController.h"
+#import "HighLightLabel.h"
 
-@interface ArticleViewController () <UIScrollViewDelegate>
+@interface ArticleViewController () <UIScrollViewDelegate, HighLightLabelDelegate>
 
-@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) HighLightLabel *contentLabel;
+@property (nonatomic) NSRange highlightedRange;
 @property (nonatomic, strong) UIScrollView *scView;
 @property (nonatomic, strong) NSMutableDictionary *words;
 @property (nonatomic, strong) NSMutableArray *word;
@@ -44,7 +46,8 @@
     
     CGRect appRect = [UIScreen mainScreen].bounds;
     
-    _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, appRect.size.width - 20, _contentHeight)];
+    _contentLabel = [[HighLightLabel alloc] initWithFrame:CGRectMake(10, 0, appRect.size.width - 20, _contentHeight)];
+    _contentLabel.delegate = self;
     _contentLabel.font = [UIFont systemFontOfSize:12];
     _contentLabel.text = self.content;
     _contentLabel.backgroundColor = [UIColor whiteColor];
@@ -140,9 +143,89 @@
      _scView.contentSize = CGSizeMake(appRect.size.width, _contentHeight);
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+#pragma mark --
+
+- (void)label:(HighLightLabel *)label didBeginTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
     
+    [self highlightWordContainingCharacterAtIndex:charIndex];
 }
+
+- (void)label:(HighLightLabel *)label didMoveTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
+    
+    [self highlightWordContainingCharacterAtIndex:charIndex];
+}
+
+- (void)label:(HighLightLabel *)label didEndTouch:(UITouch *)touch onCharacterAtIndex:(CFIndex)charIndex {
+    
+    [self removeHighlight];
+}
+
+- (void)label:(HighLightLabel *)label didCancelTouch:(UITouch *)touch {
+    
+    [self removeHighlight];
+}
+
+#pragma mark --
+
+- (void)highlightWordContainingCharacterAtIndex:(CFIndex)charIndex {
+    
+    if (charIndex==NSNotFound) {
+        
+        //user did nat click on any word
+        [self removeHighlight];
+        return;
+    }
+    
+    NSString* string = self.contentLabel.text;
+    
+    //compute the positions of space characters next to the charIndex
+    NSRange end = [string rangeOfString:@" " options:0 range:NSMakeRange(charIndex, string.length - charIndex)];
+    NSRange front = [string rangeOfString:@" " options:NSBackwardsSearch range:NSMakeRange(0, charIndex)];
+    
+    if (front.location == NSNotFound) {
+        front.location = 0; //first word was selected
+    }
+    
+    if (end.location == NSNotFound) {
+        end.location = string.length-1; //last word was selected
+    }
+    
+    NSRange wordRange = NSMakeRange(front.location, end.location-front.location);
+    
+    if (front.location!=0) { //fix trimming
+        wordRange.location += 1;
+        wordRange.length -= 1;
+    }
+    
+    if (wordRange.location == self.highlightedRange.location) {
+        return; //this word is already highlighted
+    }
+    else {
+        [self removeHighlight]; //remove highlight on previously selected word
+    }
+    
+    self.highlightedRange = wordRange;
+    
+    //highlight selected word
+    NSMutableAttributedString* attributedString = [self.contentLabel.attributedText mutableCopy];
+    [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor redColor] range:wordRange];
+    self.contentLabel.attributedText = attributedString;
+}
+
+- (void)removeHighlight {
+    
+    if (self.highlightedRange.location != NSNotFound) {
+        
+        //remove highlight from previously selected word
+        NSMutableAttributedString* attributedString = [self.contentLabel.attributedText mutableCopy];
+        [attributedString removeAttribute:NSBackgroundColorAttributeName range:self.highlightedRange];
+        self.contentLabel.attributedText = attributedString;
+        
+        self.highlightedRange = NSMakeRange(NSNotFound, 0);
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
