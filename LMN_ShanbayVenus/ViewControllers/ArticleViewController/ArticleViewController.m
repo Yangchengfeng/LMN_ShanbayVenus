@@ -48,7 +48,7 @@
     
     _contentLabel = [[HighLightLabel alloc] initWithFrame:CGRectMake(10, 0, appRect.size.width - 20, _contentHeight)];
     _contentLabel.delegate = self;
-    _contentLabel.font = [UIFont systemFontOfSize:12];
+    _contentLabel.font = [UIFont systemFontOfSize:15];
     _contentLabel.text = self.content;
     _contentLabel.backgroundColor = [UIColor whiteColor];
     _contentLabel.textAlignment = NSTextAlignmentLeft;
