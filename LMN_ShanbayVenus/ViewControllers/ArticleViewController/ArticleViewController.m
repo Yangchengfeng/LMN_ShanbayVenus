@@ -81,40 +81,42 @@
 
 - (void)changeSwitchState:(UISwitch *)sender {
     
-    if(sender.isOn) {
-        NSString *string = _contentLabel.text;
-        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:string];
-        
-        NSInteger numOfWords = _words.count;
-        
-        for(int i = 0; i<numOfWords; i++) {
-            NSString *stringForColor = _word[i];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if(sender.isOn) {
+            NSString *string = _contentLabel.text;
+            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:string];
             
-            NSMutableString * mutableString = [NSMutableString string];
+            NSInteger numOfWords = _words.count;
             
-            [string enumerateSubstringsInRange:NSMakeRange(0, string.length) options:NSStringEnumerationByWords usingBlock:
-             ^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop)
-             {
-                 [mutableString appendFormat:@"%@", substring];
-                 if([substring isEqualToString:stringForColor]) {
-                     //颜色 设置
-                     
-                     if([UIColor redColor] == nil) {
-                         return;
-                     } else {
-                         [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:enclosingRange];
+            for(int i = 0; i<numOfWords; i++) {
+                NSString *stringForColor = _word[i];
+                
+                NSMutableString * mutableString = [NSMutableString string];
+                
+                [string enumerateSubstringsInRange:NSMakeRange(0, string.length) options:NSStringEnumerationByWords usingBlock:
+                 ^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop)
+                 {
+                     [mutableString appendFormat:@"%@", substring];
+                     if([substring isEqualToString:stringForColor]) {
+                         if([UIColor redColor] == nil) {
+                             return;
+                         } else {
+                             [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:enclosingRange];
+                         }
                      }
-                  }
-             }];
-             _contentLabel.attributedText = str;
+                 }];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _contentLabel.attributedText = str;
+                });
+                
+            }
+            
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _contentLabel.textColor = [UIColor blackColor];
+            });
         }
-        
-       
-        
-    } else {
-        _contentLabel.textColor = [UIColor blackColor];
-    }
-    
+    });
 }
 
 - (void)saveWords {
