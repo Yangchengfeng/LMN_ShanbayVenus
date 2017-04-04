@@ -12,11 +12,7 @@
 
 - 文章列表
 
-- 单词高亮
-
-  + 手指点击范围内的单词高亮
-  
-  + 单词列表中包含的单词高亮
+- 单词高亮 :手指点击范围内的单词高亮、单词列表中包含的单词高亮
   
 **3、相关功能明细**
 
@@ -33,9 +29,9 @@ alien；如果 slide-bar 为3，那么高亮级别小于等于 3 的词
 
 **4、实现效果**
 
-![单词列表](https://github.com/Yangchengfeng/LMN_ShanbayVenus/imageFolder/单词列表.png)
+![单词列表](https://github.com/Yangchengfeng/LMN_ShanbayVenus/blob/master/imageFolder/单词列表.png单词列表.png)
 
-![课文详情](https://github.com/Yangchengfeng/LMN_ShanbayVenus/imageFolder/课文详情.png)
+![课文详情](https://github.com/Yangchengfeng/LMN_ShanbayVenus/blob/master/imageFolder/单词列表.png课文详情.png)
 
 4.3)右滑(此效果未截图)
 
