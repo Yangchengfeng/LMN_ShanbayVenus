@@ -132,8 +132,7 @@
 
 - (void)back
 {
-    ViewController *vc = [[ViewController alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated

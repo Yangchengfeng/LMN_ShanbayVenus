@@ -19,6 +19,7 @@
 		38583DFC1DFEF3780007CF93 /* 新概念英语第4册.txt in Resources */ = {isa = PBXBuildFile; fileRef = 38583DFB1DFEF3780007CF93 /* 新概念英语第4册.txt */; };
 		38583E031DFEF4160007CF93 /* NumberOfArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 38583E021DFEF4160007CF93 /* NumberOfArticle.m */; };
 		38583E071DFEF4900007CF93 /* NSArray+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 38583E061DFEF4900007CF93 /* NSArray+Tool.m */; };
+		386F7FC11E93CB26001D9A09 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 386F7FC01E93CB26001D9A09 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		389C0D911E010A230014B78D /* nce4_words in Resources */ = {isa = PBXBuildFile; fileRef = 389C0D901E010A230014B78D /* nce4_words */; };
 		38EF4F1E1E01B00B007FE10C /* HighLightLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EF4F1D1E01B00B007FE10C /* HighLightLabel.m */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,8 @@
 		38583E021DFEF4160007CF93 /* NumberOfArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberOfArticle.m; sourceTree = "<group>"; };
 		38583E051DFEF4840007CF93 /* NSArray+Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Tool.h"; sourceTree = "<group>"; };
 		38583E061DFEF4900007CF93 /* NSArray+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Tool.m"; sourceTree = "<group>"; };
+		386F7FBF1E93CB26001D9A09 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
+		386F7FC01E93CB26001D9A09 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		389C0D901E010A230014B78D /* nce4_words */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nce4_words; sourceTree = "<group>"; };
 		38EF4F1C1E01B00B007FE10C /* HighLightLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLightLabel.h; sourceTree = "<group>"; };
 		38EF4F1D1E01B00B007FE10C /* HighLightLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLightLabel.m; sourceTree = "<group>"; };
@@ -160,6 +163,7 @@
 		38583DFA1DFEF3400007CF93 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				386F7FBE1E93CB26001D9A09 /* FDFullscreenPopGesture */,
 				389C0D901E010A230014B78D /* nce4_words */,
 				38583DFB1DFEF3780007CF93 /* 新概念英语第4册.txt */,
 			);
@@ -182,6 +186,15 @@
 				38583E051DFEF4840007CF93 /* NSArray+Tool.h */,
 			);
 			path = "NSArray+Tool";
+			sourceTree = "<group>";
+		};
+		386F7FBE1E93CB26001D9A09 /* FDFullscreenPopGesture */ = {
+			isa = PBXGroup;
+			children = (
+				386F7FBF1E93CB26001D9A09 /* UINavigationController+FDFullscreenPopGesture.h */,
+				386F7FC01E93CB26001D9A09 /* UINavigationController+FDFullscreenPopGesture.m */,
+			);
+			path = FDFullscreenPopGesture;
 			sourceTree = "<group>";
 		};
 		38EF4F151E01AE48007FE10C /* HighLightLabel */ = {
@@ -277,6 +290,7 @@
 				38583E071DFEF4900007CF93 /* NSArray+Tool.m in Sources */,
 				38468A9A1DFC63B8008C7EF8 /* ViewController.m in Sources */,
 				38468A961DFC63A4008C7EF8 /* main.m in Sources */,
+				386F7FC11E93CB26001D9A09 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				38EF4F1E1E01B00B007FE10C /* HighLightLabel.m in Sources */,
 				38583E031DFEF4160007CF93 /* NumberOfArticle.m in Sources */,
 				38226A8D1E00101F006B0263 /* ArticleViewController.m in Sources */,

@@ -9,6 +9,7 @@
 #import "LaunchViewController.h"
 #import "ViewController.h"
 #import <CoreText/CoreText.h>
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -82,7 +83,8 @@
 }
 
 - (void)pushToViewController {
-    self.view.window.rootViewController = [[ViewController alloc] init];
+    UINavigationController *homePageNaviVC = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
+    self.view.window.rootViewController = homePageNaviVC;
 }
 
 - (UIBezierPath *)transformToBezierPath:(NSString *)string {

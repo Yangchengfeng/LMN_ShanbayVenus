@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "NumberOfArticle.h"
 #import "ArticleViewController.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -23,7 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _mainView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor greenColor]];
+    _mainView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
     _mainView.delegate = self;
     _mainView.dataSource = self;
     [self.view addSubview:_mainView];
@@ -109,8 +111,7 @@
     ArticleViewController *vc = [[ArticleViewController alloc] init];
     vc.content = [articles objectAtIndex:lineNumber];
     vc.contentHeight = ceil(textFrame.size.height);
-    UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self presentViewController:naviVC animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
