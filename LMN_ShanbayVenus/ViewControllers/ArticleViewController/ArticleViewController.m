@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIScrollView *scView;
 @property (nonatomic, strong) NSMutableDictionary *words;
 @property (nonatomic, strong) NSMutableArray *word;
+@property (nonatomic, strong) UIButton *backBtn;
 
 @end
 
@@ -27,17 +28,23 @@
     _content = content;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationItem setHidesBackButton:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self.navigationController.navigationBar setBackgroundColor:[UIColor greenColor]];
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    [btn setTitle:@"返回" forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont systemFontOfSize:12];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 55, 40)];
+    [_backBtn setBackgroundImage:[UIImage imageNamed:@"Article_Navigation_Arrow"] forState:UIControlStateNormal];
+    [_backBtn setBackgroundImage:[UIImage imageNamed:@"Article_Navigation_Arrow"] forState:UIControlStateHighlighted];
+    _backBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [_backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:_backBtn];
     
     UISwitch *highlightSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
     [highlightSwitch setOn:NO];
@@ -130,9 +137,13 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    _backBtn.hidden = YES;
+}
+
 - (void)back
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated

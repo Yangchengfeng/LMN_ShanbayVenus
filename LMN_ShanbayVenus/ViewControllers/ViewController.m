@@ -18,7 +18,7 @@
 
 @end
 
-@implementation ViewController 
+@implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,6 +52,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self showArticleWithLineNumber:indexPath.row];
 }
 
@@ -112,12 +113,6 @@
     vc.content = [articles objectAtIndex:lineNumber];
     vc.contentHeight = ceil(textFrame.size.height);
     [self.navigationController pushViewController:vc animated:YES];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
